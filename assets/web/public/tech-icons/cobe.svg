@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">cobe</title>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#e7e7ea" stroke-width="4"/>
+  <path fill="none" stroke="#e7e7ea" stroke-linecap="round" stroke-width="3.5" d="M8 33c7-4.7 15-7 24-7s17 2.3 24 7M18 48c5.8-4.3 10.5-6.4 14-6.4S40.2 43.7 46 48M32 8c-5.6 8.1-8.4 16.1-8.4 24S26.4 47.9 32 56M32 8c5.6 8.1 8.4 16.1 8.4 24S37.6 47.9 32 56"/>
+  <circle cx="44" cy="23" r="3.5" fill="#e7e7ea"/>
+</svg>

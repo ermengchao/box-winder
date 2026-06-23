@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Bun</title>
+  <circle cx="32" cy="35" r="21" fill="#e7e7ea"/>
+  <path fill="#111016" d="M24 34h5v5h-5zm14 0h5v5h-5z"/>
+  <path fill="none" stroke="#111016" stroke-linecap="round" stroke-width="3" d="M27 46c3.5 2.3 8.5 2.3 12 0"/>
+  <path fill="#e7e7ea" d="M15 31c2.4-9.5 8-15 17-15s14.6 5.5 17 15z"/>
+</svg>

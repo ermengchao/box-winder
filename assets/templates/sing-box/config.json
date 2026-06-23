@@ -1,0 +1,62 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-hosts",
+        "type": "hosts"
+      },
+      {
+        "tag": "dns-local",
+        "type": "local"
+      },
+      {
+        "tag": "dns-dhcp",
+        "type": "dhcp"
+      },
+      {
+        "tag": "doh-cloudflare",
+        "type": "h3",
+        "server": "dns.cloudflare.com",
+        "path": "/dns-query",
+        "domain_resolver": "dns-cloudflare"
+      },
+      {
+        "tag": "doh-google",
+        "type": "h3",
+        "server": "dns.google",
+        "path": "/dns-query",
+        "domain_resolver": "dns-google"
+      },
+      {
+        "tag": "dns-cloudflare",
+        "type": "udp",
+        "server": "1.1.1.1"
+      },
+      {
+        "tag": "dns-google",
+        "type": "udp",
+        "server": "8.8.8.8"
+      }
+    ],
+    "final": "dns-local"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true
+    }
+  },
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "time.apple.com",
+    "server_port": 123,
+    "interval": "30m"
+  },
+  "route": {
+    "default_domain_resolver": "dns-local"
+  }
+}

@@ -1,0 +1,28 @@
+[Unit]
+Description=box-winder managed sing-box instance (%i)
+Documentation=https://sing-box.sagernet.org/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=box-winder
+Group=box-winder
+EnvironmentFile=-/etc/box-winder/box-winder.env
+ExecStart=/usr/bin/env sing-box run -c ${BOX_WINDER_SING_BOX_CONFIG_PATH}
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+LimitNOFILE=1048576
+
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/box-winder /var/log/box-winder /run/box-winder
+
+[Install]
+WantedBy=multi-user.target

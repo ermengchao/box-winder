@@ -1,0 +1,59 @@
+[tools]
+bun = "latest"
+
+[env]
+# Meta
+HOST = "0.0.0.0"
+PORT = "12000"
+NODE_LOCATION = "JP"
+DOMAIN_NAME = ""
+ACME_EMAIL = "zhangchao050530@gmail.com"
+
+# Frontend
+API_BASE_URL = "http://localhost:12000"
+API_CORS_ORIGINS = "http://localhost:3000,http://127.0.0.1:3000"
+
+# Backend
+SING_BOX_PORT_BASE = "12000"
+SUBSCRIPTION_TEMPLATE_DIR = "assets/templates/subscriptions"
+JWT_EXPIRES_IN = "8h"
+BOX_WINDER_SING_BOX_SYSTEMD_UNIT = "sing-box@box-winder.service"
+BOX_WINDER_SYSTEMD_SCOPE = "user"
+
+# Misc
+SHADOWTLS_HANDSHAKE_SERVER = "apple.com"
+SHADOWTLS_HANDSHAKE_PORT = "443"
+SING_BOX_COMMAND = "sing-box"
+SYSTEMCTL_COMMAND = "systemctl"
+
+[tasks.install]
+description = "Install Bun workspace dependencies"
+run = "bun install"
+
+[tasks.dev-web]
+description = "Run the reused awsing Next.js frontend"
+run = "bun run dev:web"
+
+[tasks.dev-api]
+description = "Run the NestJS API"
+run = "bun run dev:api"
+
+[tasks.dev-daemon]
+description = "Run the NestJS daemon worker"
+run = "bun run dev:daemon"
+
+[tasks.test]
+description = "Run TypeScript tests"
+run = "bun run test"
+
+[tasks.typecheck]
+description = "Typecheck all apps and packages"
+run = "bun run typecheck"
+
+[tasks.lint]
+description = "Run Biome checks"
+run = "bun run lint"
+
+[tasks.systemd-env]
+description = "Render a systemd EnvironmentFile from the active mise environment"
+run = "bun run systemd:env"

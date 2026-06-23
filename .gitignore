@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+dist
+build
+.next
+.env
+.env.*
+!.env.example
+mise.local.toml
+bun.lockb
+coverage
+*.log
