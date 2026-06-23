@@ -5,11 +5,13 @@ const GRAPHQL_ENDPOINT =
 
 export async function POST(request: Request) {
   const body = await request.text();
+  const authorization = request.headers.get("Authorization");
 
   try {
     const response = await fetch(GRAPHQL_ENDPOINT, {
       method: "POST",
       headers: {
+        ...(authorization ? { Authorization: authorization } : {}),
         "Content-Type": "application/json",
       },
       body,
