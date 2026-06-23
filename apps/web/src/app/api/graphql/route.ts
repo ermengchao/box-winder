@@ -2,13 +2,28 @@ import { NextResponse } from "next/server";
 
 const GRAPHQL_ENDPOINT =
   process.env.GRAPHQL_ENDPOINT ?? "http://localhost:12000/graphql";
+const graphqlEndpoint = parseGraphqlEndpoint(GRAPHQL_ENDPOINT);
 
 export async function POST(request: Request) {
   const body = await request.text();
   const authorization = request.headers.get("Authorization");
 
+  if (!graphqlEndpoint) {
+    return NextResponse.json(
+      {
+        errors: [
+          {
+            message:
+              "GRAPHQL_ENDPOINT must be a valid http(s) URL, for example https://api.example.com/graphql.",
+          },
+        ],
+      },
+      { status: 500 },
+    );
+  }
+
   try {
-    const response = await fetch(GRAPHQL_ENDPOINT, {
+    const response = await fetch(graphqlEndpoint, {
       method: "POST",
       headers: {
         ...(authorization ? { Authorization: authorization } : {}),
@@ -38,5 +53,19 @@ export async function POST(request: Request) {
       },
       { status: 502 },
     );
+  }
+}
+
+function parseGraphqlEndpoint(value: string): string | null {
+  try {
+    const url = new URL(value);
+
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return null;
+    }
+
+    return url.toString();
+  } catch {
+    return null;
   }
 }
